@@ -10,6 +10,11 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+<% if user_signed_in? %>
+  Welcome <%= current_user.username %> / Click here to <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <p>Log in/sign up <%= link_to "here", new_user_session_path %>, or sign in with <%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %>.</p>
+<% end %>
 <%= yield %>
 
 </body>

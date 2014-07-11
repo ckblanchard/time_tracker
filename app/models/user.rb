@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
       user
     else
       create! do |user|
-        user.email = oauth.info.email || ""
+        user.email = oauth.info.email || oauth.uid+"@twitter.com"
         user.uid = oauth.uid
         user.username = oauth.info.nickname
         user.avatar = oauth.info.image
