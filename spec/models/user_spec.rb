@@ -1,7 +1,56 @@
 require 'spec_helper'
 
 describe User do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  
+  it "is valid with an email and password" do
+    user = User.new(
+      email: "example@example.com",
+      password: "examplepassword")
+    expect(user).to be_valid
+  end
+
+  it "is invalid without an email" do
+    user = User.new(
+      email: nil,
+      password: "examplepassword")
+    # expect(user).to have(1).errors_on(:email)
+    user.valid?
+    expect(user.errors[:email].size).to eq(1)
+  end
+
+  it "is invalid without a password" do
+    user = User.new(
+      email: "example@example.com",
+      password: nil)
+    user.valid?
+    expect(user.errors[:password].size).to eq(1)
+  end
+
+  it "is invalid with a duplicate email address" do
+    User.create(
+      email: "example@example.com",
+      password: "password")
+    user = User.new(
+      email: "example@example.com",
+      password: "password2")
+    user.valid?
+    expect(user.errors[:email].size).to eq(1)
+  end
+
+  it "is referenced by username if it exists" do
+    user = User.create(
+      email: "john@example.com",
+      password: "examplepassword",
+      username: "ckblanc")
+    expect(user.name).to eq("ckblanc")
+  end
+
+  it "is referenced by email if no username exists" do
+    user = User.create(
+      email: "john@example.com",
+      password: "examplepassword")
+    expect(user.name).to eq("john@example.com")
+  end
 
   describe ".find_or_create_from_twitter" do
     let(:omniauth_hash) do
@@ -23,9 +72,60 @@ describe User do
       let!(:user) { FactoryGirl.create(:user, uid: omniauth_hash.uid, provider: omniauth_hash.provider) }
 
       it "returns that user" do
-        expect(User.find_or_create_from_twitter(omniauth_hash).to eq(user))
+        expect(User.find_or_create_from_twitter(omniauth_hash)).to eq(user)
       end
     end
 
+  end
+
+  context "signs up" do
+    it "creates a blank profile" do
+      user = User.create(
+        email: "john@example.com",
+        password: "examplepassword",
+        username: "ckblanc")
+      expect(user.profile.id).to eq(user.id)
+      expect(user.profile.name).to eq("")
+      expect(user.profile.address).to eq("")
+      expect(user.profile.address2).to eq("")
+      expect(user.profile.city).to eq("")
+      expect(user.profile.state).to eq("")
+      expect(user.profile.zip_code).to eq("")
+      expect(user.profile.phone_number).to eq("")
+    end
+
+    it "responds to profile actions" do
+      user = User.create(
+        email: "john@example.com",
+        password: "examplepassword",
+        username: "ckblanc")
+      expect(user.profile).to respond_to(:name)
+      expect(user.profile).to respond_to(:address)
+      expect(user.profile).to respond_to(:address2)
+      expect(user.profile).to respond_to(:city)
+      expect(user.profile).to respond_to(:state)
+      expect(user.profile).to respond_to(:zip_code)
+      expect(user.profile).to respond_to(:phone_number)
+    end
+  end
+
+  context "responds to delegated profile methods" do
+    it "calls delegated profile methods" do
+      user = User.create(
+        email: "john@example.com",
+        password: "examplepassword",
+        username: "ckblanc")
+      user.profile.name = "John Doe"
+      # user.profile.address = "526 Grove St." # don't include address for now
+      user.profile.city = "San Francisco"
+      user.profile.state = "CA"
+      user.profile.phone_number = "415-555-1234"
+
+      expect(user.name).to eq("John Doe")
+      # expect(user.address).to eq("526 Grove St.")
+      expect(user.city).to eq("San Francisco")
+      expect(user.state).to eq("CA")
+      expect(user.phone_number).to eq("415-555-1234")
+    end
   end
 end

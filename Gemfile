@@ -42,10 +42,17 @@ gem 'omniauth-twitter', '~> 1.0.1'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development do
+  gem 'better_errors'
+end
+
 group :development, :test do
   # gem 'rspec-rails', '~> 3.0.0'
   gem 'rspec-rails', '~> 2.99.0'
   gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
+  gem 'database_cleaner', '~> 1.3.0'
 end
 
 group :test do
