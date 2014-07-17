@@ -122,10 +122,11 @@ describe User do
       user.profile.phone_number = "415-555-1234"
 
       expect(user.name).to eq("John Doe")
-      # expect(user.address).to eq("526 Grove St.")
       expect(user.city).to eq("San Francisco")
       expect(user.state).to eq("CA")
       expect(user.phone_number).to eq("415-555-1234")
+      # expect(user.errors[:address].size).to eq(1)
+      expect { user.address }.to raise_error(NoMethodError)
     end
   end
 end
