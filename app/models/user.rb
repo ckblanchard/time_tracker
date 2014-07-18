@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:twitter]
 
   has_one :profile
+  has_many :clients, dependent: :destroy
 
   delegate :name, :phone_number, :city, :state, to: :profile
 

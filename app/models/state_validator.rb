@@ -1,6 +1,8 @@
 class StateValidator < ActiveModel::Validator
 
   def validate(record)
+    return record.errors[:state] << "Please enter a valid state." if record.state.nil?
+
     unless states.include? record.state.upcase
       record.errors[:state] << "Must be a valid two letter state abbreviation."
     end
