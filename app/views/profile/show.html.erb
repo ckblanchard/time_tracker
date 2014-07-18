@@ -1,2 +1,31 @@
-This is the show.
-<%= @profile.inspect %>
+<div class="page-header">
+  <h1>Profile<br/>
+  <small>Keep all your information up to date.</small></h1>
+  
+  <!-- <button type="button" class="btn btn-primary">Default button</button> -->
+  <%= link_to "Edit your profile", edit_profile_path, class: "btn btn-primary" %>
+</div>
+
+<div class="row">
+  <div class="col-xs-2 col-xs-offset-1">
+    <h3 class="text-right">Name:</h3>
+    <h3 class="text-right">Address:</h3>
+    <h3 class="text-right">Address:</h3>
+    <h3 class="text-right">City:</h3>
+    <h3 class="text-right">State:</h3>
+    <h3 class="text-right">Zip:</h3>
+    <h3 class="text-right">Phone:</h3>
+    <% unless @profile.user.provider.blank? %><h3>Account created with:</h3><% end %>
+  </div>
+
+  <div class="col-xs-8">
+    <h3><%= @profile.name.blank? ? " " : @profile.name %>&nbsp;</h3>
+    <h3><%= @profile.address.blank? ? " " : @profile.address %>&nbsp;</h3>
+    <h3><%= @profile.address2.blank? ? " " : @profile.address2 %>&nbsp;</h3>
+    <h3><%= @profile.city.blank? ? " " : @profile.city %>&nbsp;</h3>
+    <h3><%= @profile.state.blank? ? " " : @profile.state %>&nbsp;</h3>
+    <h3><%= @profile.zip_code.blank? ? " " : @profile.zip_code %>&nbsp;</h3>
+    <h3><%= @profile.phone_number.blank? ? " " : @profile.phone_number %>&nbsp;</h3>
+    <h3><%= @profile.user.provider.blank? ? " " : @profile.user.provider %></h3>
+  </div>
+</div> <!-- row -->

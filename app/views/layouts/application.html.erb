@@ -7,16 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if notice || alert %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  <% end %>
+  
+  <%= render partial: "layouts/alerts" %>
 
   <%= render partial: "layouts/navbar" %>
 
-<div class="container">
-  <%= yield %>
-</div>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
+<br/><br/><br/><br/><br/>
+<%= debug params if Rails.env.development? %>

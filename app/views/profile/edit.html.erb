@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>Edit your profile<br/>
+  <small>Keep all your information up to date.</small></h1>
+  <!-- <button type="button" class="btn btn-primary">Default button</button> -->
+  <%= link_to "Back to your profile", profile_path, class: "btn btn-default btn-sm" %>
+</div>
+
+<%= bootstrap_form_for @profile, layout: :horizontal, label_col: "col-xs-3", control_col: "col-xs-9" do |form| %>
+  <%= form.text_field :name %>
+  <%= form.text_field :address %>
+  <%= form.text_field :address2 %>
+  <%= form.text_field :city %>
+  <%= form.text_field :state %>
+  <%= form.text_field :zip_code %>
+  <%= form.text_field :phone_number %>
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>
