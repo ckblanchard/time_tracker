@@ -17,6 +17,8 @@ class ClientsController < ApplicationController
   end
 
   def create
+    @client = current_user.clients.new(client_params)
+
     if @client.save
       # redirect_to clients_path, notice: "Client successfully created."
       redirect_to @client, notice: "Client successfully created."
@@ -50,6 +52,6 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client)
         .permit(:contact_name, :company, :address, :address2, 
-          :city, :state, :zip_code, :phone_number)
+          :city, :state, :zip_code, :phone_number, :user_id)
     end
 end

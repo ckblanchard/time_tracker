@@ -17,24 +17,16 @@
     <% @clients.each do |client| %>
       <tr>
         <td><%= client.company %></td>
-      </tr>
-      <tr>
         <td><%= client.contact_name %></td>
-      </tr>
-      <tr>
         <td>
           <address>
             <%= client.address %><br>
-            <%= client.address2 %><br>
+            <% unless client.address2.blank? %><%= client.address2 %><br> <% end %>
             <%= client.city %>, <%= client.state %> <%= client.zip_code %><br>
           </address>  
         </td>
-      </tr>
-      <tr>
         <td><%= client.phone_number %></td>
-      </tr>
-      <tr>
-        <td><%= link_to "Edit", edit_client_path(client), class: "btn, btn-sm, btn-primary" %></td>
+        <td><%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_client_path(client), class: "btn btn-primary btn-sm" %></td>
       </tr>
       <% end %>
   </tbody>

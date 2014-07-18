@@ -1,0 +1,11 @@
+<%= bootstrap_form_for @client, layout: :horizontal, label_col: "col-xs-3", control_col: "col-xs-9" do |form| %>
+  <%= form.text_field :contact_name %>
+  <%= form.text_field :company %>
+  <%= form.text_field :address %>
+  <%= form.text_field :address2 %>
+  <%= form.text_field :city %>
+  <%= form.text_field :state %>
+  <%= form.text_field :zip_code %>
+  <%= form.text_field :phone_number %>
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

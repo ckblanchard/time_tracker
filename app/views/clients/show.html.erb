@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1><%= @client.company %></h1>
+  
+  <%= link_to "Edit client", edit_client_path(@client), class: "btn btn-primary" %>
+  <%= link_to "All clients", clients_path, class: "btn btn-primary" %>
+</div>
+
+<!-- REDO AS A TABLE -->
+
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-1">
+    <h3 class="text-right">Contact name:</h3>
+    <h3 class="text-right">Company name:</h3>
+    <h3 class="text-right">Address:</h3>
+    <h3 class="text-right">Address:</h3>
+    <h3 class="text-right">City:</h3>
+    <h3 class="text-right">State:</h3>
+    <h3 class="text-right">Zip:</h3>
+    <h3 class="text-right">Phone:</h3>
+  </div>
+
+  <div class="col-xs-6">
+    <h3><%= @client.contact_name %>&nbsp;</h3>
+    <h3><%= @client.company %>&nbsp;</h3>
+    <h3><%= @client.address %>&nbsp;</h3>
+    <h3><%= @client.address2 %>&nbsp;</h3>
+    <h3><%= @client.city %>&nbsp;</h3>
+    <h3><%= @client.state %>&nbsp;</h3>
+    <h3><%= @client.zip_code %>&nbsp;</h3>
+    <h3><%= @client.phone_number %>&nbsp;</h3>
+  </div>
+</div> <!-- row -->
