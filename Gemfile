@@ -23,6 +23,8 @@ gem 'devise', '~> 3.2.4'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-twitter', '~> 1.0.1'
 
+# gem 'validates_phone_number', '~> 2.0.1' # Wrote my own regex
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -50,4 +52,5 @@ end
 
 group :test do
   gem 'capybara', '~> 2.3.0'
+  gem 'faker', '~> 1.4.2'
 end

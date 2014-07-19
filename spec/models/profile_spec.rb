@@ -7,6 +7,11 @@ describe Profile do
     expect(profile).to be_valid
   end
 
+  it "should belong to a user" do
+    t = Profile.reflect_on_association(:user)
+    expect(t.macro).to eq(:belongs_to)
+  end
+
   it "responds to profile attribute methods" do
     expect(profile).to respond_to(:name)
     expect(profile).to respond_to(:address)

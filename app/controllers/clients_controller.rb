@@ -20,8 +20,8 @@ class ClientsController < ApplicationController
     @client = current_user.clients.new(client_params)
 
     if @client.save
-      # redirect_to clients_path, notice: "Client successfully created."
-      redirect_to @client, notice: "Client successfully created."
+      redirect_to clients_path, notice: "Client successfully created."
+      # redirect_to @client, notice: "Client successfully created."
     else
       render action: 'new', alert: "There was a problem creating your client. Please try again."
     end

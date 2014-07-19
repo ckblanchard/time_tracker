@@ -1,41 +1,60 @@
 require 'spec_helper'
 
 describe User do
-  
-  it "is valid with an email and password" do
-    user = User.new(
-      email: "example@example.com",
-      password: "examplepassword")
-    expect(user).to be_valid
+
+  context "associations" do
+    it "has one profile" do
+      t = User.reflect_on_association(:profile)
+      expect(t.macro).to eq(:has_one)
+    end
+
+    it "has many clients" do
+      t = User.reflect_on_association(:clients)
+      expect(t.macro).to eq(:has_many)
+    end
   end
 
-  it "is invalid without an email" do
-    user = User.new(
-      email: nil,
-      password: "examplepassword")
-    # expect(user).to have(1).errors_on(:email)
-    user.valid?
-    expect(user.errors[:email].size).to eq(1)
+
+  context "with valid attributes" do
+    it "is valid with an email and password" do
+      user = User.new(
+        email: "example@example.com",
+        password: "examplepassword")
+      expect(user).to be_valid
+    end
   end
 
-  it "is invalid without a password" do
-    user = User.new(
-      email: "example@example.com",
-      password: nil)
-    user.valid?
-    expect(user.errors[:password].size).to eq(1)
+
+  context "with invalid attributes" do
+    it "is invalid without an email" do
+      user = User.new(
+        email: nil,
+        password: "examplepassword")
+      # expect(user).to have(1).errors_on(:email)
+      user.valid?
+      expect(user.errors[:email].size).to eq(1)
+    end
+
+    it "is invalid without a password" do
+      user = User.new(
+        email: "example@example.com",
+        password: nil)
+      user.valid?
+      expect(user.errors[:password].size).to eq(1)
+    end
+
+    it "is invalid with a duplicate email address" do
+      User.create(
+        email: "example@example.com",
+        password: "password")
+      user = User.new(
+        email: "example@example.com",
+        password: "password2")
+      user.valid?
+      expect(user.errors[:email].size).to eq(1)
+    end
   end
 
-  it "is invalid with a duplicate email address" do
-    User.create(
-      email: "example@example.com",
-      password: "password")
-    user = User.new(
-      email: "example@example.com",
-      password: "password2")
-    user.valid?
-    expect(user.errors[:email].size).to eq(1)
-  end
 
   it "is referenced by username if it exists" do
     user = User.create(
@@ -51,6 +70,7 @@ describe User do
       password: "examplepassword")
     expect(user.name).to eq("john@example.com")
   end
+
 
   describe ".find_or_create_from_twitter" do
     let(:omniauth_hash) do
@@ -78,6 +98,8 @@ describe User do
 
   end
 
+
+###### REFACTOR THIS CRAP BELOW
   context "signs up" do
     it "creates a blank profile" do
       user = User.create(
