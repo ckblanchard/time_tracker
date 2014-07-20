@@ -3,9 +3,16 @@ require 'spec_helper'
 describe Client do
   let(:client) { FactoryGirl.create(:client) }
 
-  it "should belong to a user" do
-    t = Client.reflect_on_association(:user)
-    expect(t.macro).to eq(:belongs_to)
+  context "has associations like" do
+    it "should belong to a user" do
+      t = Client.reflect_on_association(:user)
+      expect(t.macro).to eq(:belongs_to)
+    end
+
+    it "should have many jobs" do
+      t = Client.reflect_on_association(:jobs)
+      expect(t.macro).to eq(:has_many)
+    end
   end
 
   context "with valid attributes" do

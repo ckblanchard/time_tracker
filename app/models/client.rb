@@ -1,5 +1,6 @@
 class Client < ActiveRecord::Base
   belongs_to :user
+  has_many :jobs
 
   validates :company, :address, :city, presence: true
   validates :zip_code, numericality: { only_integer: true }, length: { is: 5 }
