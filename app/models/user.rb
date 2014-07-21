@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_many :clients, dependent: :destroy
+  has_many :jobs, through: :clients
+  has_many :invoices, through: :jobs
 
   delegate :name, :phone_number, :city, :state, to: :profile
 

@@ -14,6 +14,6 @@ FactoryGirl.define do
     start_date nil
     end_date nil
     rate nil
-    client nil
+    association :client
   end
 end

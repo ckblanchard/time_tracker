@@ -1,0 +1,8 @@
+<%= bootstrap_form_for @job, layout: :horizontal, label_col: "col-xs-3", control_col: "col-xs-9" do |form| %>
+  <%= form.text_field :job_name %>
+  <%= form.date_field :start_date %>
+  <%= form.date_field :end_date %>
+  <%= form.number_field :rate %>
+  <%= form.collection_select :client_id, current_user.clients, :id, :company %>
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

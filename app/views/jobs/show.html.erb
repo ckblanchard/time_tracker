@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1><%= @job.job_name %></h1>
+  
+  <%= link_to "Edit job", edit_job_path(@job), class: "btn btn-primary" %>
+  <%= link_to "All jobs", jobs_path, class: "btn btn-primary" %>
+</div>
+
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-1">
+    <h3 class="text-right">Job name:</h3>
+    <h3 class="text-right">Start date:</h3>
+    <h3 class="text-right">End date:</h3>
+    <h3 class="text-right">Hourly rate:</h3>
+    <h3 class="text-right">Client:</h3>
+  </div>
+
+  <div class="col-xs-6">
+    <h3><%= @job.job_name %></h3>
+    <h3><%= @job.start_date.to_date.to_formatted_s(:long) %></h3>
+    <h3><%= @job.end_date.to_date.to_formatted_s(:long) %></h3>
+    <h3><%= number_to_currency @job.rate %></h3>
+    <h3><%= @job.client.company %></h3>
+  </div>
+</div> <!-- row -->

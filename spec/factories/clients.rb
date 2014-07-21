@@ -15,6 +15,18 @@ FactoryGirl.define do
     user_id 1
   end
 
+  factory :invalid_client, class: Client do
+    contact_name nil
+    company nil
+    address nil
+    address2 nil
+    city nil
+    state "Calif"
+    zip_code "1234b"
+    phone_number "415-555-1234"
+    # user_id 1
+  end
+
   factory :lindsay, class: Client do
     contact_name "L. Riddell"
     company "Habitat"

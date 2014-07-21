@@ -10,7 +10,10 @@ describe Job do
       expect(t.macro).to eq(:belongs_to)
     end
 
-    it "has many invoices"
+    it "has many invoices" do
+      t = Job.reflect_on_association(:invoices)
+      expect(t.macro).to eq(:has_many)
+    end
   end
 
   context "with valid attributes" do
