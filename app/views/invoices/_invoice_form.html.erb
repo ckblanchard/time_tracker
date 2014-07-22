@@ -1,7 +1,7 @@
 <%= bootstrap_form_for [@job, @invoice], layout: :horizontal, label_col: "col-xs-3", control_col: "col-xs-9" do |form| %>
   <%= form.date_field :invoice_date %>
   <% if params[:action] == "edit" %>
-    <%= form.select :status, options_for_select(@statuses.collect {|s| [s[0].humanize, s[0]] }, selected: @invoice.status) %>
+    <%= form.select :status, options_for_select(@statuses.map {|s| [s[0].humanize, s[0]] }, selected: @invoice.status) %>
   <% end %>
-  <%= form.submit class: "btn btn-primary" %>
+  <%= form.button "Save invoice", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
 <% end %>

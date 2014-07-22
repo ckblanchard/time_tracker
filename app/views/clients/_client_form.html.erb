@@ -7,5 +7,5 @@
   <%= form.text_field :state %>
   <%= form.text_field :zip_code %>
   <%= form.text_field :phone_number %>
-  <%= form.submit class: "btn btn-primary" %>
+  <%= form.button "Save client", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
 <% end %>

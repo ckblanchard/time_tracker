@@ -13,5 +13,5 @@
   <%= form.text_field :state %>
   <%= form.text_field :zip_code %>
   <%= form.text_field :phone_number %>
-  <%= form.submit class: "btn btn-primary" %>
+  <%= form.button "Update profile", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spinn'></i> Updating..."} %>
 <% end %>

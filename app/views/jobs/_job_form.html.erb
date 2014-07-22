@@ -4,5 +4,5 @@
   <%= form.date_field :end_date %>
   <%= form.number_field :rate %>
   <%= form.collection_select :client_id, current_user.clients, :id, :company %>
-  <%= form.submit class: "btn btn-primary" %>
+  <%= form.button "Save job", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
 <% end %>
