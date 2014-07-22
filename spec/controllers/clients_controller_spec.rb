@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ClientsController do
   let(:user) { FactoryGirl.create(:user) }
-  let(:client) { FactoryGirl.create(:client) }
+  let(:client) { FactoryGirl.create(:client, user: user) }
   let(:invalid_client) { FactoryGirl.create(:invalid_client) }
 
   before do

@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe JobsController do
   let(:user) { FactoryGirl.create(:user) }
-  let(:job) { FactoryGirl.create(:job) }
+  let(:client) { FactoryGirl.create(:client, user: user) }
+  let(:job) { FactoryGirl.create(:job, client: client) }
   let(:invalid_job) { FactoryGirl.create(:invalid_job) }
 
   before do

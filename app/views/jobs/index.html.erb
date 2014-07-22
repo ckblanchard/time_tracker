@@ -24,7 +24,9 @@
         <td><%= number_to_currency job.rate %></td>
         <td>
           <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_job_path(job), class: "btn btn-primary btn-sm" %>
-          <%= link_to "View", job_path(job), class: "btn btn-primary btn-sm" %></td>
+          <%= link_to "View", job_path(job), class: "btn btn-primary btn-sm" %>
+          <%= link_to "Invoices", job_invoices_path(job), class: "btn btn-primary btn-sm" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

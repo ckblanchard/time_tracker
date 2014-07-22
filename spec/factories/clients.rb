@@ -12,7 +12,7 @@ FactoryGirl.define do
     # zip_code { Faker::Address.zip_code }
     zip_code "12345"
     phone_number "415-555-1234" #{ Faker::PhoneNumber.phone_number }
-    user_id 1
+    association :user
   end
 
   factory :invalid_client, class: Client do
@@ -24,7 +24,7 @@ FactoryGirl.define do
     state "Calif"
     zip_code "1234b"
     phone_number "415-555-1234"
-    # user_id 1
+    user_id nil
   end
 
   factory :lindsay, class: Client do

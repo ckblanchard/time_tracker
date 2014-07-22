@@ -1,1 +1,7 @@
-show.html.erb
+<div class="page-header">
+  <h1>Invoice for <%= @invoice.invoice_date %><br/>
+    <small><%= @job.job_name %></small></h1>
+  
+  <%= link_to "Edit invoice", edit_job_invoice_path(@job, @invoice), class: "btn btn-primary" %>
+  <%= link_to "All invoices", job_invoices_path(@job), class: "btn btn-primary" %>
+</div>

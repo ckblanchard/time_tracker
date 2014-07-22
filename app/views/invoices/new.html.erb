@@ -1,1 +1,9 @@
-new.html.erb
+<div class="page-header">
+  <h1>New invoice<br/>
+  <small>Add an invoice to <%= @job.job_name %>.</small></h1>
+  
+  <%= link_to "Back to invoice list", job_invoices_path(@job), class: "btn btn-default btn-sm" %>
+</div>
+
+<%= render 'invoice_form' %>
+

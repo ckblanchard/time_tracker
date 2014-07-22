@@ -1,1 +1,8 @@
-edit.html.erb
+<div class="page-header">
+  <h1>Edit invoice</h1>
+  
+  <%= link_to "Cancel", job_invoice_path(@job, @invoice), class: "btn btn-default btn-sm" %>
+</div>
+
+<%= render 'invoice_form' %>
+
