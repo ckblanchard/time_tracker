@@ -49,8 +49,6 @@ describe Invoice do
     end
   end
 
-# expect { Lead.new.stale! }.to raise_error(ActiveRecord::RecordInvalid)
-
   context "with enum" do
     it "is active by default" do
       newInvoice = Invoice.new
@@ -77,9 +75,3 @@ describe Invoice do
       expect(invoice.status).to eq("paid")
     end
   end
-
-end
-
-
-# validation sample
-# expect { Lead.new.stale! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Value invalid for new leads")
