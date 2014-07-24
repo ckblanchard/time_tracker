@@ -5,7 +5,7 @@ class CreateEntries < ActiveRecord::Migration
       t.time :start_time
       t.time :end_time
       t.time :total_time
-      t.integer :status
+      t.integer :status, default: 0
       t.integer :user_id
       t.integer :invoice_id
 
