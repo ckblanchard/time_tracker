@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   
   def index
     @jobs = current_user.jobs
+    @jobs = Job.filter(params.slice(:client))
   end
 
   def show
@@ -51,5 +52,4 @@ class JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:job_name, :start_date, :end_date, :rate, :client_id)
     end
-
 end
