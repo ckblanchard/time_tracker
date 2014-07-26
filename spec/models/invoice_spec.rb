@@ -75,3 +75,4 @@ describe Invoice do
       expect(invoice.status).to eq("paid")
     end
   end
+end
