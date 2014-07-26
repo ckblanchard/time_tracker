@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Job do
+  include MoneyRails::TestHelpers
   let(:job) { FactoryGirl.create(:job) }
   # let(:invalid_job) { FactoryGirl.create(:invalid_job) }
 
@@ -56,8 +57,15 @@ describe Job do
     end
 
     it "is invalid without a rate" do
-      job.rate = nil
+      job.rate_cents = nil
+      job.save
       expect(job).not_to be_valid
+    end
+  end
+
+  context "with money" do
+    it "has a money value for rate" do
+      expect(monetize(:rate_cents)).to be_truthy
     end
   end
 end
