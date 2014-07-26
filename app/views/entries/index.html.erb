@@ -12,22 +12,20 @@
     <th>End time</th>
     <th>Total time</th>
     <th>Status</th>
-    <th>Client</th>
-    <th>Job</th>
+    <th>Client / Job</th>
     <th>Invoice date</th>
     <th></th>
   </thead>
   <tbody>
     <% @entries.each do |entry| %>
       <tr>
-        <td><%= entry.entry_date %></td>
-        <td><%= entry.start_time %></td>
-        <td><%= entry.end_time %></td>
+        <td><%= entry.entry_date.to_formatted_s(:long) %></td>
+        <td><%= format_time entry.start_time %></td>
+        <td><%= format_time entry.end_time %></td>
         <td><%= entry.total_time %></td>
         <td><%= entry.status %></td>
-        <td><%= entry.invoice.job.client.company %></td>
-        <td><%= entry.invoice.job.job_name %></td>
-        <td><%= entry.invoice.invoice_date %></td>
+        <td><%= entry.invoice.job.client.company %> / <%= entry.invoice.job.job_name %></td>
+        <td><%= entry.invoice.invoice_date.to_formatted_s(:long) %></td>
         <td>
           <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_entry_path(entry), class: "btn btn-primary btn-sm" %>
           <%= link_to "View", entry_path(entry), class: "btn btn-primary btn-sm" %>

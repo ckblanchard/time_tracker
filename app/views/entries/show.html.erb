@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>Entry for <%= @entry.entry_date %><br/>
+  <h1>Entry for <%= @entry.entry_date.to_formatted_s(:long) %><br/>
     <small>Total time: <%= @entry.total_time? ? @entry.total_time : "0" %> hours</small></h1>
   
   <%= link_to "Edit entry", edit_entry_path(@entry), class: "btn btn-primary" %>
@@ -10,12 +10,14 @@
   <div class="col-xs-4 col-xs-offset-1">
     <h3 class="text-right">Start time:</h3>
     <h3 class="text-right">End time:</h3>
+    <h3 class="text-right">Subtotal:</h3>
     <h3 class="text-right">Status:</h3>
   </div>
 
   <div class="col-xs-6">
-    <h3><%= @entry.start_time %>&nbsp;</h3>
-    <h3><%= @entry.end_time %>&nbsp;</h3>
+    <h3><%= format_time @entry.start_time %>&nbsp;</h3>
+    <h3><%= format_time @entry.end_time %>&nbsp;</h3>
+    <h3><%= humanized_money_with_symbol @entry.subtotal %>&nbsp;</h3>
     <h3><%= @entry.status %>&nbsp;</h3>
   </div>
 </div> <!-- row -->
