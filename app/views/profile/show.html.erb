@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-2 col-xs-offset-1">
+  <div class="col-xs-4 col-xs-offset-1">
     <h3 class="text-right">Name:</h3>
     <h3 class="text-right">Address:</h3>
     <h3 class="text-right">Address:</h3>
@@ -18,7 +18,7 @@
     <% unless @profile.user.provider.blank? %><h3 class="text-right">Account created with:</h3><% end %>
   </div>
 
-  <div class="col-xs-8">
+  <div class="col-xs-6">
     <h3><%= @profile.name.blank? ? " " : @profile.name %>&nbsp;</h3>
     <h3><%= @profile.address.blank? ? " " : @profile.address %>&nbsp;</h3>
     <h3><%= @profile.address2.blank? ? " " : @profile.address2 %>&nbsp;</h3>

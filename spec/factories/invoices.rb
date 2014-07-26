@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :invoice do
     invoice_date "2014-07-20 18:15:32"
-    status 1
+    status 0
     association :job
   end
 

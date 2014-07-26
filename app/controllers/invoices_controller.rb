@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
-  before_action :set_select_statuses, only: [:new, :edit]
+  before_action :set_invoice_statuses, only: [:new, :edit]
   before_action :authenticate_user!
 
   def index
@@ -33,10 +33,10 @@ class InvoicesController < ApplicationController
   end
 
   def update
-    @statuses = Invoice.statuses
+    # @statuses = Invoice.statuses
 
     if @invoice.update(invoice_params)
-      redirect_to @invoice, notice: "Invoice successfully updated."
+      redirect_to job_invoice_path(@job, @invoice), notice: "Invoice successfully updated."
     else
       render action: 'edit', alert: "There was a problem updating your invoice. Please try again."
     end
@@ -57,7 +57,7 @@ class InvoicesController < ApplicationController
       @invoice = @job.invoices.find(params[:id])
     end
 
-    def set_select_statuses
+    def set_invoice_statuses
     @statuses = Invoice.statuses
     end
 

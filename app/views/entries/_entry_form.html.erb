@@ -1,0 +1,8 @@
+<%= bootstrap_form_for @entry, layout: :horizontal, label_col: "col-xs-3", control_col: "col-xs-9" do |form| %>
+  <%= form.date_field :entry_date %>
+  <%= form.time_field :start_time %>
+  <%= form.time_field :end_time %>
+  <%#= form.select :status, options_for_select(@statuses.map {|s| [s[0].humanize, s[0]] }, selected: @entry.status) if params[:action] == "edit" %>
+  <%= form.collection_select :invoice, current_user.invoices, :id, :invoice_date, html: { include_blank: true, selected: @entry.invoice } %>
+  <%= form.button "Save entry", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
+<% end %>

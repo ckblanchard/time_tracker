@@ -5,3 +5,49 @@
   <%= link_to "Edit invoice", edit_job_invoice_path(@job, @invoice), class: "btn btn-primary" %>
   <%= link_to "All invoices", job_invoices_path(@job), class: "btn btn-primary" %>
 </div>
+
+<% @invoice.entries.each do |entry| %>
+  <% if entry.finished? %>
+    <h2>Entry: <%= entry.entry_date.to_formatted_s(:long) %></h2>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-1">
+        <h3 class="text-right">Start time:</h3>
+        <h3 class="text-right">End time:</h3>
+        <h3 class="text-right">Status:</h3>
+      </div>
+
+      <div class="col-xs-6">
+        <h3><%= entry.start_time.to_formatted_s(:long) %>&nbsp;</h3>
+        <h3><%= entry.end_time %>&nbsp;</h3>
+        <h3><%= entry.status %>&nbsp;</h3>
+      </div>
+    </div> <!-- row -->
+    <hr>
+  <% end %>
+<% end %>
+
+
+<table class="table table-striped table-hover">
+  <thead>
+    <th>Entry date</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Total time</th>
+    <th>Subtotal</th>
+  </thead>
+  <tbody>
+    <% @invoice.entries.each do |entry| %>
+      <tr>
+        <td><%= entry.entry_date %></td>
+        <td><%= entry.start_time %></td>
+        <td><%= entry.end_time %></td>
+        <td><%= entry.total_time %></td>
+        <td><%= entry.subtotal %></td>
+        <td>
+          <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_job_invoice_path(@job, invoice), class: "btn btn-primary btn-sm" %>
+          <%= link_to "View", job_invoice_path(@job, invoice), class: "btn btn-primary btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
