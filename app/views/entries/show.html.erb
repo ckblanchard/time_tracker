@@ -12,6 +12,7 @@
     <h3 class="text-right">End time:</h3>
     <h3 class="text-right">Subtotal:</h3>
     <h3 class="text-right">Status:</h3>
+    <h3 class="text-right">Topic:</h3>
   </div>
 
   <div class="col-xs-6">
@@ -19,5 +20,6 @@
     <h3><%= format_time @entry.end_time %>&nbsp;</h3>
     <h3><%= humanized_money_with_symbol @entry.subtotal %>&nbsp;</h3>
     <h3><%= @entry.status %>&nbsp;</h3>
+    <h3><%= @entry.topic %>&nbsp;</h3>
   </div>
 </div> <!-- row -->

@@ -5,4 +5,8 @@ class Invoice < ActiveRecord::Base
   has_many :entries
 
   validates :invoice_date, :status, presence: true
+
+  def self.invoices_for(current_user)
+    current_user.invoices.map { |i| ["#{i.job.job_name}: #{i.invoice_date}", i.id]  }
+  end
 end

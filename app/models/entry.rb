@@ -8,7 +8,7 @@ class Entry < ActiveRecord::Base
 
   validates :user_id, :entry_date, :start_time, presence: true
 
-  after_update :check_end_time, on: :update
+  after_create :check_end_time
 
   def check_end_time
     return unless self.end_time?

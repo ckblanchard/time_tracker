@@ -3,18 +3,48 @@
   <small>The freelancer's best friend for tracking projects, hours and invoicing.</small></h1>
 </div>
 
-<div>
-  <h2 class="text-center">Start tracking time now</h2>
-  <br>
-  <div class="btn-group btn-group-justified">
-    <div class="btn-group">
-      <button type="button" class="btn btn-success btn-lg start-button">Start</button>
-    </div>
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger btn-lg stop-button">Stop</button>
+<div class="row instructions">
+  <div class="col-md-4">
+    <div class="thumbnail thumbnail1">
+      <div class="caption">
+        <h2><span class="glyphicon glyphicon-chevron-right text-warning"></span> Sign up</h2>
+        <p>Create an account or sign in with your Twitter credentials. Other social networks coming soon.</p>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+        <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %>
+      </div>
     </div>
   </div>
-  <div id="record">
-    <p class="timer text-center active"></p>
+  <div class="col-md-4">
+    <div class="thumbnail thumbnail2">
+      <div class="caption">
+        <h2><span class="glyphicon glyphicon-chevron-right text-success"></span> Add clients</h2>
+        <p>Input information about your clients, and create individual jobs for those clients.</p>
+      </div>
+    </div>
   </div>
-</div>
+  <div class="col-md-4">
+    <div class="thumbnail thumbnail3">
+      <div class="caption">
+        <h2><span class="glyphicon glyphicon-chevron-right text-info"></span> Generate invoices</h2>
+        <p>Track your work times and apply those times to invoices you can then send to your clients.</p>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<!-- <div class="row instructions">
+  <div class="jumbotron col-md-4">
+    <h1>Sign up</h1>
+    <p>Create an account or sign in with your Twitter credentials. Other social networks coming soon.</p>
+    <%#= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+    <%#= link_to "Sign in", new_user_session_path, class: "btn btn-primary btn-lg" %>
+  </div>
+  <div class="jumbotron col-md-4">
+    <h1>Add clients</h1>
+    <p>Input information about your clients, and create individual jobs for those clients.</p>
+  </div>
+  <div class="jumbotron col-md-4">
+    <h1>Generate invoices</h1>
+    <p>Track your work times and apply those times to invoices you can then send to your clients.</p>
+  </div>
+</div> -->

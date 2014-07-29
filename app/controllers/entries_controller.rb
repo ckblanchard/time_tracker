@@ -12,13 +12,18 @@ class EntriesController < ApplicationController
 
   def new
     @entry = Entry.new
+    @entry.user_id = current_user.id
   end
 
   def edit
   end
 
   def create
+    params = entry_params
     @entry = current_user.entries.new(entry_params)
+    @entry.start_time = Time.at(params[:start_time].to_i)
+    @entry.end_time = Time.at(params[:end_time].to_i)
+    @entry.entry_date = Time.at(params[:entry_date].to_i)
 
     if @entry.save
       redirect_to entries_path, notice: "Entry successfully created."
@@ -54,7 +59,7 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-      params.require(:entry).permit(:entry_date, :start_time, :end_time, :total_time, :status, :user_id, :invoice_id )
+      params.require(:entry).permit(:entry_date, :start_time, :end_time, :total_time, :status, :user_id, :invoice_id, :topic )
     end
 
 end
