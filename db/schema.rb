@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729034158) do
+ActiveRecord::Schema.define(version: 20140729185259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,11 +46,13 @@ ActiveRecord::Schema.define(version: 20140729034158) do
   end
 
   create_table "invoices", force: true do |t|
-    t.integer  "status",       default: 0
+    t.integer  "status",         default: 0
     t.integer  "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "invoice_date"
+    t.integer  "total_cents",    default: 0,     null: false
+    t.string   "total_currency", default: "USD", null: false
   end
 
   add_index "invoices", ["job_id"], name: "index_invoices_on_job_id", using: :btree
