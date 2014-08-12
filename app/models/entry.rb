@@ -3,6 +3,7 @@ class Entry < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :invoice
+  belongs_to :topic
 
   monetize :subtotal_cents, allow_nil: true
 
