@@ -30,7 +30,6 @@ describe User do
       user = User.new(
         email: nil,
         password: "examplepassword")
-      # expect(user).to have(1).errors_on(:email)
       user.valid?
       expect(user.errors[:email].size).to eq(1)
     end
@@ -138,7 +137,6 @@ describe User do
         password: "examplepassword",
         username: "ckblanc")
       user.profile.name = "John Doe"
-      # user.profile.address = "526 Grove St." # don't include address for now
       user.profile.city = "San Francisco"
       user.profile.state = "CA"
       user.profile.phone_number = "415-555-1234"
@@ -147,7 +145,6 @@ describe User do
       expect(user.city).to eq("San Francisco")
       expect(user.state).to eq("CA")
       expect(user.phone_number).to eq("415-555-1234")
-      # expect(user.errors[:address].size).to eq(1)
       expect { user.address }.to raise_error(NoMethodError)
     end
   end

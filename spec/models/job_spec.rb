@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Job do
   include MoneyRails::TestHelpers
   let(:job) { FactoryGirl.create(:job) }
-  # let(:invalid_job) { FactoryGirl.create(:invalid_job) }
 
   context "has associations like" do
     it "belongs to a client" do

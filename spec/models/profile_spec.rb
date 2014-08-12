@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Profile do
   let(:profile) { FactoryGirl.create(:profile) }
-  # let(:invalid_profile) { FactoryGirl.create(:invalid_profile) }
 
   it "has a valid factory" do
     expect(profile).to be_valid

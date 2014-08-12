@@ -31,28 +31,9 @@ describe Entry do
   end
 
   context "status" do
-    it "defaults to 'unattached' upon creation" do
-      expect(entry.status).to eq("unattached")
-    end
-
-    it "is not 'finished' upon creation" do
-      expect(entry.status).not_to eq("finished")
-    end
-
     it "is not 'attached' upon creation" do
       expect(entry.status).not_to eq("attached")
     end
-
-    it "changes to 'finished' when end time is logged" do
-      entry = Entry.create(entry_date: Date.today, start_time: Time.now, user_id: 1, invoice: invoice)
-      entry.end_time = Time.now + 1.hour
-      entry.save
-      expect(entry.status).to eq("finished")
-    end
-
-    it "cannot be changed to 'finished' without an end time"
-    it "can be changed to 'attached' if has a total time"
-    it "cannot be changed to 'attached' without a total time"
   end
 
   context "with valid attributes" do
@@ -81,9 +62,6 @@ describe Entry do
       entry.start_time = nil
       expect(entry).not_to be_valid
     end
-
-    it "cannot be attached to an invoice without a 'finished' status"
-    it "cannot be attached to an invoice without a total time"
   end
 
   context "#calculate_total_time" do
@@ -116,10 +94,8 @@ describe Entry do
 
   context "#calculate_subtotal" do
     it "should return a valid money amount" do
-      entry = Entry.create(entry_date: Date.today, start_time: Time.now, user_id: 1, invoice: invoice)
-      entry.end_time = Time.now + 1.hour
-      entry.save
-      expect(entry.subtotal).to eq(Money.new(1000))
+      entry = Entry.create(entry_date: Date.today, start_time: Time.now, end_time: (Time.now + 1.hour), user_id: 1, invoice: invoice)
+      expect(entry.subtotal.class).to eq(Money)
     end
   end
 
