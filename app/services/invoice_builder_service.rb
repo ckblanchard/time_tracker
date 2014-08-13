@@ -8,4 +8,11 @@ class InvoiceBuilderService
   # def compute_total
 
   # end
+
+
+  # TO DOs
+  # - Aggregate all entries for invoice date range
+  # - Aggregate all entries as line-items by topic_id
+  # - Need to subtotal line-items
+  # - Need to compute total for the invoice
 end

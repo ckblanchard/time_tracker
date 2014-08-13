@@ -18,6 +18,11 @@ describe Entry do
       t = Entry.reflect_on_association(:invoice)
       expect(t.macro).to eq(:belongs_to)
     end
+
+    it "should belong to a topic" do
+      t = Entry.reflect_on_association(:topic)
+      expect(t.macro).to eq(:belongs_to)
+    end
   end
 
   context "with money" do

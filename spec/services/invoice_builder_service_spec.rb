@@ -3,7 +3,14 @@ require 'spec_helper'
 describe InvoiceBuilderService do
   let(:invoice) { FactoryGirl.create(:invoice) }
   let(:builder) { InvoiceBuilderService.new(invoice) }
-  let(:params) { {entry_date: Date.today, start_time: Time.now, end_time: (Time.now + 1.hour), user_id: 1, invoice_id: invoice.id, topic: "test"} }
+  let!(:topic) { FactoryGirl.create(:topic) }
+  let(:params) { 
+    {entry_date: Date.today, 
+      start_time: Time.now, 
+      end_time: (Time.now + 1.hour), 
+      user_id: 1, 
+      invoice_id: invoice.id,
+      topic: topic} }
   let!(:entry1) { Entry.create(params) }
   let!(:entry2) { Entry.create(params) }
   
@@ -34,6 +41,10 @@ describe InvoiceBuilderService do
 
     it "can access invoice's entries" do
       expect(builder.invoice.entries.first).to eq(entry1)
+    end
+
+    it "can access topics belonging to the invoice's entries" do
+      expect(builder.invoice.entries.first.topic).to eq(topic)
     end
   end
 

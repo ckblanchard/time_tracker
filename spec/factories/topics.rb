@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :topic do
-    name "MyString"
+    name { Faker::Hacker.adjective }
   end
 end

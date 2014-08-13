@@ -9,5 +9,6 @@ FactoryGirl.define do
     status 0
     user_id 1
     invoice_id 1
+    topic_id 1
   end
 end
