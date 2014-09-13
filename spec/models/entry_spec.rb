@@ -6,7 +6,7 @@ describe Entry do
   let(:client) { FactoryGirl.create(:client, user: user) }
   let(:job) { FactoryGirl.create(:job, client: client) }
   let(:invoice) { FactoryGirl.create(:invoice, job: job) }
-  let(:entry) { FactoryGirl.create(:entry, invoice: invoice) }
+  let(:entry) { FactoryGirl.create(:entry, invoice: invoice, user: user) }
 
   context "has associations like" do
     it "should belong to a user" do
@@ -32,22 +32,26 @@ describe Entry do
 
   context "status" do
     it "defaults to 'unattached' upon creation" do
-      expect(entry.status).to eq("unattached")
+      new_entry = Entry.create(entry_date: Date.today, start_time: Time.now)
+      expect(new_entry.status).to eq("unattached")
     end
 
     it "is not 'finished' upon creation" do
-      expect(entry.status).not_to eq("finished")
+      new_entry = Entry.create(entry_date: Date.today, start_time: Time.now)
+      expect(new_entry.status).not_to eq("finished")
     end
 
     it "is not 'attached' upon creation" do
-      expect(entry.status).not_to eq("attached")
+      new_entry = Entry.create(entry_date: Date.today, start_time: Time.now)
+      expect(new_entry.status).not_to eq("attached")
     end
 
     it "changes to 'finished' when end time is logged" do
-      entry = Entry.create(entry_date: Date.today, start_time: Time.now, user_id: 1, invoice: invoice)
-      entry.end_time = Time.now + 1.hour
-      entry.save
-      expect(entry.status).to eq("finished")
+      entry2 = Entry.create(entry_date: Date.today, start_time: Time.now, user_id: 1)
+      binding.pry
+      entry2.end_time = Time.now + 1.hour
+      entry2.save
+      expect(entry2.status).to eq("finished")
     end
 
     it "cannot be changed to 'finished' without an end time"
@@ -57,11 +61,14 @@ describe Entry do
 
   context "with valid attributes" do
     it "is valid with a user" do
-      expect(entry).to be_valid
+      new_entry = Entry.create(entry_date: Date.today, start_time: Time.now, user_id: 1)
+      expect(new_entry).to be_valid
     end
 
     it "is valid without an invoice" do
       entry.invoice_id = nil
+      binding.pry
+      entry.save
       expect(entry).to be_valid
     end
   end
