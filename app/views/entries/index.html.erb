@@ -27,7 +27,7 @@
         <td><%= entry.status %></td>
         <td><%= entry.invoice.job.client.company %> / <%= entry.invoice.job.job_name %></td>
         <td><%= entry.invoice.invoice_date.to_formatted_s(:long) %></td>
-        <td><%= entry.topic %></td>
+        <td><%= entry.topic.name if entry.topic %></td>
         <td>
           <%= link_to '<span class="glyphicon glyphicon-edit"></span> Edit'.html_safe, edit_entry_path(entry), class: "btn btn-primary btn-sm" %>
           <%= link_to "View", entry_path(entry), class: "btn btn-primary btn-sm" %>

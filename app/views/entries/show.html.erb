@@ -20,6 +20,6 @@
     <h3><%= format_time @entry.end_time %>&nbsp;</h3>
     <h3><%= humanized_money_with_symbol @entry.subtotal %>&nbsp;</h3>
     <h3><%= @entry.status %>&nbsp;</h3>
-    <h3><%= @entry.topic %>&nbsp;</h3>
+    <h3><%= @entry.topic.name %>&nbsp;</h3>
   </div>
 </div> <!-- row -->

@@ -7,7 +7,7 @@ class Entry < ActiveRecord::Base
 
   monetize :subtotal_cents, allow_nil: true
 
-  validates :user_id, :entry_date, :start_time, presence: true
+  validates :user_id, :entry_date, :start_time, :invoice_id, presence: true
 
   after_create :check_end_time
 
