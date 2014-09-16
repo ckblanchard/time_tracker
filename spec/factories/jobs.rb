@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :job do
     job_name { Faker::Hacker.adjective }
-    start_date "2014-07-19 22:19:57"
-    end_date "2014-08-19 22:19:57"
+    start_date Date.today
+    end_date Date.tomorrow
     rate_cents 1000
     association :client
   end

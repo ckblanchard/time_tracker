@@ -30,6 +30,7 @@
   <%= form.hidden_field :start_time %>
   <%= form.hidden_field :end_time %>
   <%= form.select :invoice_id, options_for_select(Invoice.invoices_for current_user), label: "Choose an invoice for this entry", include_blank: true %>
-  <%= form.text_field :topic %>
+  <%#= form.select :topic_id, options_for_select(Topic.all), label: "Choose a topic", include_blank: true %>
+  <%= form.text_field :topic_id %>
   <%= form.button "Save entry", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
 <% end %>

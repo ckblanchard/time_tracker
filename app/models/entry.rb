@@ -9,7 +9,7 @@ class Entry < ActiveRecord::Base
 
   validates :user_id, :entry_date, :start_time, :invoice_id, presence: true
 
-  after_create :check_end_time
+  after_create :check_end_time # set as after_create for now, but may change to after_update
 
   def check_end_time
     return unless self.end_time?

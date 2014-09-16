@@ -5,3 +5,4 @@ FactoryGirl.define do
     name { Faker::Hacker.adjective }
   end
 end
+

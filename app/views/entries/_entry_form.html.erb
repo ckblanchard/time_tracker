@@ -4,6 +4,6 @@
   <%= form.time_field :end_time %>
   <%#= form.select :status, options_for_select(@statuses.map {|s| [s[0].humanize, s[0]] }, selected: @entry.status) if params[:action] == "edit" %>
   <%= form.collection_select :invoice, current_user.invoices, :id, :invoice_date, html: { include_blank: true, selected: @entry.invoice } %>
-  <%= form.text_field :topic %>
+  <%= form.text_field :topic_id %>
   <%= form.button "Save entry", class: "btn btn-primary", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Saving..."} %>
 <% end %>
