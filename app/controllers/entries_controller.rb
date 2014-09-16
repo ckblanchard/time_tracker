@@ -59,7 +59,7 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-      params.require(:entry).permit(:entry_date, :start_time, :end_time, :total_time, :status, :user_id, :invoice_id, :topic )
+      params.require(:entry).permit(:entry_date, :start_time, :end_time, :total_time, :status, :user_id, :invoice_id, :topic_id )
     end
 
 end
