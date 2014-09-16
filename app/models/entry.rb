@@ -3,12 +3,13 @@ class Entry < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :invoice
+  belongs_to :topic
 
   monetize :subtotal_cents, allow_nil: true
 
   validates :user_id, :entry_date, :start_time, :invoice_id, presence: true
 
-  after_update :check_end_time
+  after_create :check_end_time # set as after_create for now, but may change to after_update
 
   def check_end_time
     return unless self.end_time?
