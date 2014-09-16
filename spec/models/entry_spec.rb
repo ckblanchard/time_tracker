@@ -7,6 +7,7 @@ describe Entry do
   let(:job) { FactoryGirl.create(:job, client: client) }
   let(:invoice) { FactoryGirl.create(:invoice, job: job) }
   let(:entry) { FactoryGirl.create(:entry, invoice: invoice, user: user) }
+  let(:unfinished_entry) { FactoryGirl.create(:unfinished_entry, invoice: invoice, user: user) }
 
   context "has associations like" do
     it "should belong to a user" do
@@ -22,11 +23,11 @@ describe Entry do
 
   context "with money" do
     it "has a money value for subtotal" do
-      expect(monetize(:subtotal_cents)).to be_true
+      expect(monetize(:subtotal_cents)).to be_truthy
     end
 
     it "accepts nil values, for before subtotal is calculated" do
-      expect(monetize(:subtotal_cents).allow_nil).to be_true
+      expect(monetize(:subtotal_cents).allow_nil).to be_truthy
     end
   end
 
@@ -47,11 +48,9 @@ describe Entry do
     end
 
     it "changes to 'finished' when end time is logged" do
-      entry2 = Entry.create(entry_date: Date.today, start_time: Time.now, user_id: 1)
-      binding.pry
-      entry2.end_time = Time.now + 1.hour
-      entry2.save
-      expect(entry2.status).to eq("finished")
+      unfinished_entry.end_time = Time.now + 1.hour
+      unfinished_entry.save
+      expect(unfinished_entry.status).to eq("finished")
     end
 
     it "cannot be changed to 'finished' without an end time"
@@ -60,16 +59,9 @@ describe Entry do
   end
 
   context "with valid attributes" do
-    it "is valid with a user" do
-      new_entry = Entry.create(entry_date: Date.today, start_time: Time.now, user_id: 1)
+    it "is valid with a user, invoice, entry date and start time" do
+      new_entry = Entry.create(entry_date: Date.today, start_time: Time.now, user_id: 1, invoice_id: 1)
       expect(new_entry).to be_valid
-    end
-
-    it "is valid without an invoice" do
-      entry.invoice_id = nil
-      binding.pry
-      entry.save
-      expect(entry).to be_valid
     end
   end
 
@@ -86,6 +78,11 @@ describe Entry do
 
     it "is invalid without a start time" do
       entry.start_time = nil
+      expect(entry).not_to be_valid
+    end
+
+    it "is invalid without an invoice" do
+      entry.invoice_id = nil
       expect(entry).not_to be_valid
     end
 
