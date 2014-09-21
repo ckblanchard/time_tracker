@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timetracker</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+  <%= render partial: "layouts/alerts" %>
+
+  <%= render partial: "layouts/navbar" %>
+
+  <div class="container">
+    <h1>Angular layout template</h1>
+    <%= yield %>
+  </div>
+
+</body>
+</html>
+<br/><br/><br/><br/><br/>
+<%= debug params if Rails.env.development? %>

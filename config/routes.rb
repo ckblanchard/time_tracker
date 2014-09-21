@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
   root 'home#index'
+  get 'dashboard' => 'home#dashboard'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
+  devise_scope :user do
+    get '/api/current_user' => 'users/sessions#show_current_user'
+  end
 
   resource :profile, controller: :profile, except: [:destroy]
 

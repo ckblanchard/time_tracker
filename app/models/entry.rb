@@ -9,7 +9,8 @@ class Entry < ActiveRecord::Base
 
   validates :user_id, :entry_date, :start_time, :invoice_id, presence: true
 
-  after_create :check_end_time # set as after_create for now, but may change to after_update
+  after_update :check_end_time # This is the ajax approach where begin and end times are logged in separate posts
+  #after_create :check_end_time # This version works for a single http request with begin & end times
 
   def check_end_time
     return unless self.end_time?
