@@ -44,6 +44,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    angularjs-rails (1.2.22)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (2.1.1.20140710)
       execjs
@@ -131,6 +132,8 @@ GEM
       money (~> 6.1.1)
       railties (>= 3.0)
     multi_json (1.10.1)
+    ngmin-rails (0.4.0)
+      rails (>= 3.1)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     oauth (0.4.7)
@@ -232,8 +235,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
-      coffee-rails
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
     uglifier (2.5.1)
@@ -249,6 +250,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angularjs-rails (~> 1.2.22)
   autoprefixer-rails
   better_errors
   bootstrap-sass (~> 3.2.0)
@@ -264,6 +266,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   money-rails
+  ngmin-rails (~> 0.4.0)
   omniauth (~> 1.2.2)
   omniauth-twitter (~> 1.0.1)
   pg
@@ -273,5 +276,4 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
-  turbolinks
   uglifier (>= 1.3.0)

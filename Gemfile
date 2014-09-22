@@ -11,7 +11,10 @@ gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
+# gem 'turbolinks' # removed for Angular
+
+gem 'angularjs-rails', '~> 1.2.22'
+gem 'ngmin-rails', '~> 0.4.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
