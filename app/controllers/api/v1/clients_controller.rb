@@ -7,6 +7,13 @@ module Api
       def index
         @clients = current_user.clients
         render json: @clients
+
+        # render status: 200,
+        #   json: {
+        #     success: true,
+        #     info: "Current user",
+        #     clients: @clients
+        #   }
       end
 
       def show

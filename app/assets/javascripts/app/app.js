@@ -12,5 +12,28 @@ app.config(function($routeProvider) {
         }
       }
     })
+    .when('/clients', {
+      templateUrl: '/templates/clients.html',
+      controller: 'ClientsController',
+      resolve: {
+        session: function(SessionService) {
+          return SessionService.getCurrentUser();
+        },
+        clients: function(ClientService) {
+          return ClientService.getClients();
+        }
+      }
+    })
+    .when('/clients/:id', {
+      templateUrl: '/templates/client.html',
+      controller: 'ClientsController',
+      resolve: {
+        session: function(SessionService) {
+          return SessionService.getCurrentUser();
+        },
+        client: function(ClientService) {
+          return ClientService.getClient(id);
+        }
+    })
   .otherwise({ redirectTo: '/' })
 });

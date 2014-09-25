@@ -14,11 +14,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Jobs", jobs_path if user_signed_in? %></li>
-        <li><%= link_to "Clients", clients_path if user_signed_in? %></li>
-        <li><%= link_to '<span class="glyphicon glyphicon-user"></span> Profile'.html_safe, profile_path if user_signed_in? %></li>
-        <li><%= link_to '<span class="glyphicon glyphicon-log-out"></span> Sign out'.html_safe, destroy_user_session_path, method: :delete if user_signed_in? %></li>
-        <li><%= link_to '<span class="glyphicon glyphicon-log-in"></span> Sign in'.html_safe, new_user_session_path unless user_signed_in? %></li>
+        <li>
+          <a href="/#/jobs">Jobs</a>
+          <%#= link_to "Jobs", jobs_path if user_signed_in? %>
+        </li>
+        <li>
+          <a href="/#/clients">Clients</a>
+          <%#= link_to "Clients", clients_path if user_signed_in? %>
+        </li>
+        <li>
+          <a href="/#/profile">Profile</a>
+          <%#= link_to '<span class="glyphicon glyphicon-user"></span> Profile'.html_safe, profile_path if user_signed_in? %>
+        </li>
+        <li>
+          <%= link_to '<span class="glyphicon glyphicon-log-out"></span> Sign out'.html_safe, destroy_user_session_path, method: :delete if user_signed_in? %>
+        </li>
+        <li>
+          <%= link_to '<span class="glyphicon glyphicon-log-in"></span> Sign in'.html_safe, new_user_session_path unless user_signed_in? %>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

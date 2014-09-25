@@ -26,5 +26,24 @@ angular.module('timetracker.services', [])
     };
 
     return service;
+  })
+  .factory('ClientService', function($http) {
+
+    var service = {
+      getClients: function() {
+        return $http.get('/api/v1/clients')
+        .then(function(response) {
+          return service.allClients = response.data;
+        });
+      },
+      getClient: function(client) {
+        return $http.get('/api/v1/clients/' + client)
+        .then(function(response) {
+          return service.client = response.data;
+        });
+      }
+    };
+
+    return service;
   });
 
