@@ -19,7 +19,7 @@ app.config(function($routeProvider) {
         session: function(SessionService) {
           return SessionService.getCurrentUser();
         },
-        clients: function(ClientService) {
+        allClients: function(ClientService) {
           return ClientService.getClients();
         }
       }
@@ -31,9 +31,12 @@ app.config(function($routeProvider) {
         session: function(SessionService) {
           return SessionService.getCurrentUser();
         },
-        client: function(ClientService) {
-          return ClientService.getClient(id);
+        clientById: function(ClientService, $route) {
+          // console.log("Resolving client #" + $route.current.params.id);
+          // console.log("route:", $route);
+          return ClientService.getClient($route.current.params.id);
         }
+      }
     })
   .otherwise({ redirectTo: '/' })
 });

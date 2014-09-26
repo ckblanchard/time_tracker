@@ -30,6 +30,8 @@ angular.module('timetracker.services', [])
   .factory('ClientService', function($http) {
 
     var service = {
+      allClients: [],
+      onClient: null,
       getClients: function() {
         return $http.get('/api/v1/clients')
         .then(function(response) {
@@ -37,13 +39,16 @@ angular.module('timetracker.services', [])
         });
       },
       getClient: function(client) {
+        console.log("getClient just called with param: " + client);
         return $http.get('/api/v1/clients/' + client)
         .then(function(response) {
-          return service.client = response.data;
+          console.log(".then returns: " + response.data);
+          return service.oneClient = response.data;
         });
       }
     };
-
+    console.log("ClientService returns");
+    console.log(service);
     return service;
   });
 
