@@ -1,4 +1,4 @@
-// angular.module('timetracker.services')
+// angular.module('timetracker')
 // .factory('SessionService', function($http, $q) {
 
 //   var service = {
