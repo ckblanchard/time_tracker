@@ -1,5 +1,8 @@
 <h2>Clients page <small>Welcome back {{ user.email }}</small> </h2>
 
 <ul>
-  <li ng-repeat="client in clients">{{ client.contact_name }}</li>
+  <li ng-repeat="client in clients">
+    Client: {{ client.contact_name }}
+    | <a ng-href="/clients/{{client.id}}">View</a>
+  </li>
 </ul>
