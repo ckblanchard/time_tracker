@@ -1,6 +1,7 @@
 var app = angular.module('timetracker', ['ngRoute',
   'timetracker.controllers',
-  'timetracker.services']);
+  'timetracker.services',
+  'timetracker.sessionService']);
 
 app.config(function($routeProvider) {
   $routeProvider.when('/', {
