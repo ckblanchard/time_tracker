@@ -21,6 +21,34 @@ app.config(function($stateProvider, $urlRouterProvider) {
           return SessionService.getCurrentUser();
         }
       }
+    })
+    .state('clients', {
+      url: "/clients",
+      templateUrl: "/templates/clients.html",
+      controller: "ClientsController",
+      resolve: {
+        session: function(SessionService) {
+          return SessionService.getCurrentUser();
+        },
+        allClients: function(ClientService) {
+          return ClientService.getClients();
+        }
+      }
+    })
+    .state('clients.detail', {
+      url: "/:id",
+      templateUrl: "/templates/clients.detail.html",
+      controller: "ClientsController",
+      resolve: {
+        session: function(SessionService) {
+          return SessionService.getCurrentUser();
+        },
+        clientById: function(ClientService, $stateParams) {
+          // console.log("Resolving client #" + $route.current.params.id);
+          // console.log("route:", $route);
+          return ClientService.getClient($stateParams.id);
+        }
+      }
     });
 });
 

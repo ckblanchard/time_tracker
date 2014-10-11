@@ -3,6 +3,10 @@
 <ul>
   <li ng-repeat="client in clients">
     Client: {{ client.contact_name }}
-    | <a ng-href="#/clients/{{client.id}}">View</a>
+    <!--| <a ng-href="#/clients/{{client.id}}">View</a> -->
+    | <a ui-sref="clients.detail({id: client.id})">View</a>
   </li>
 </ul>
+
+
+<div ui-view></div>
