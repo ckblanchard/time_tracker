@@ -13,6 +13,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 # gem 'turbolinks' # removed for Angular
 
+gem 'bower-rails'
+
 gem 'angularjs-rails', '~> 1.2.22'
 gem 'ngmin-rails', '~> 0.4.0'
 
