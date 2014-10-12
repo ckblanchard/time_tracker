@@ -13,7 +13,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
   // Application states
   $stateProvider
     .state('dashboard', {
-      url: "/",
+      url: "",
+      abstract: true,
       templateUrl: "/templates/dashboard.html",
       controller: "HomeController",
       resolve: {
@@ -22,8 +23,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
-    .state('clients', {
-      url: "/clients",
+    .state('dashboard.clients', {
+      url: "/",
       templateUrl: "/templates/clients.html",
       controller: "ClientsController",
       resolve: {
@@ -50,6 +51,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     });
+
 });
 
 // app.config(function($routeProvider) {

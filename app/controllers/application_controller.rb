@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   after_action :set_csrf_cookie_for_ng
 
   def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || dashboard_path ||root_path
+    request.env['omniauth.origin'] || stored_location_for(resource) || root_path || dashboard_path
   end
 
   private
