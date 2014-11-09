@@ -1,12 +1,47 @@
-<h2>Select a client</h2>
+<!-- <h2>Select a client</h2>
 
 <ul>
   <li ng-repeat="client in clients">
     Client: {{ client.contact_name }}
-    <!--| <a ng-href="#/clients/{{client.id}}">View</a> -->
     | <a ui-sref="clients.detail({id: client.id})">View</a>
   </li>
-</ul>
+</ul> -->
 
+<form class="form-inline">
+
+  <div class="form-group col-xs-12 col-md-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-briefcase"></i> Client
+      </span>
+      <label class="sr-only" for="client">Choose client</label>
+      <select class="form-control selectpicker"
+              ng-model="selectedClient"
+              ng-options="client.company for client in clients"
+              ng-change="loadClientJobs()"
+              name="client">
+              <option value="">-- choose client --</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group col-xs-12 col-md-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-wrench"></i> Job
+      </span>
+      <label class="sr-only" for="job">Choose job</label>
+      <select class="form-control selectpicker"
+            ng-disabled="!selectedClient"
+            ng-model="selectedJob"
+            ng-options="job.job_name for job in jobOptions"
+            ng-change="loadJob()"
+            name="job">
+            <option value="">-- choose job --</option>
+      </select>
+    </div>
+  </div>
+
+</form>
 
 <div ui-view></div>
