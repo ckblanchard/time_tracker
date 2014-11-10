@@ -25,6 +25,17 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
 
+    .state('profile', {
+      url: "/profile",
+      templateUrl: "/templates/profile.html",
+      controller: "ProfileController",
+      resolve: {
+        session: function(SessionService) {
+          return SessionService.getCurrentUser();
+        }
+      }
+    })
+
     .state('clients', {
       parent: 'dashboard',
       url: "/",
