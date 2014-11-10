@@ -36,9 +36,29 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
 
+    .state('entry', {
+      parent: 'dashboard',
+      url: "",
+      templateUrl: "/templates/entry.html",
+      controller: "EntryController",
+      resolve: {
+        allClients: function(ClientService) {
+          return ClientService.getClients();
+        },
+        allJobs: function(JobsService) {
+          return JobsService.getJobs();
+        }
+      }
+    })
+    .state('entry.new', {
+      url: "/new",
+      templateUrl: "/templates/entry.new.html",
+      controller: "NewEntryController"
+    })
+
     .state('clients', {
       parent: 'dashboard',
-      url: "/",
+      url: "/clients",
       templateUrl: "/templates/clients.html",
       controller: "ClientsController",
       resolve: {
@@ -51,7 +71,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('clients.detail', {
-      url: "/client/:id",
+      url: "/clients/:id",
       templateUrl: "/templates/clients.detail.html",
       controller: "ClientsDetailController",
       resolve: {
@@ -72,7 +92,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     });
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 
 });
 
