@@ -25,17 +25,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
 
-    .state('profile', {
-      url: "/profile",
-      templateUrl: "/templates/profile.html",
-      controller: "ProfileController",
-      resolve: {
-        session: function(SessionService) {
-          return SessionService.getCurrentUser();
-        }
-      }
-    })
-
     .state('entry', {
       parent: 'dashboard',
       url: "",
@@ -88,6 +77,19 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
       resolve: {
         allJobs: function(JobsService) {
           return JobsService.getJobs();
+        }
+      }
+    })
+
+
+
+    .state('profile', {
+      url: "/profile",
+      templateUrl: "/templates/profile.html",
+      controller: "ProfileController",
+      resolve: {
+        session: function(SessionService) {
+          return SessionService.getCurrentUser();
         }
       }
     });

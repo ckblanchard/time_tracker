@@ -3,7 +3,7 @@
   <small>Start tracking your time.</small></h1>
 </div>
 
-<div>
+<!-- <div>
   <div class="btn-group btn-group-justified">
     <div class="btn-group">
       <button type="button" class="btn btn-success btn-lg start-button">Start</button>
@@ -17,8 +17,17 @@
       <p class="timer text-center active"></p>
     </div>
   </div>
-</div>
+</div> -->
 
+<cb-timer start-time="data.outerStartTime" 
+          end-time="data.outerEndTime">
+</cb-timer>
+<div class="row">
+
+<p>Start time is {{data.outerStartTime}}</p>
+<p>End time is {{data.outerEndTime}}</p>
+
+</div>
 <form class="form-inline" name="entryFinishForm">
 
   <div class="form-group col-xs-12 col-md-6">

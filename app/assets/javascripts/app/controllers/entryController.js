@@ -9,17 +9,21 @@ angular.module('timetracker')
   $scope.selectedJob = null;
   $scope.jobOptions = [];
 
-  $scope.loadClientJobs = function() {
+  $scope.loadClientJobs = function(id) {
+    if ($scope.selectedJob) {
+      $scope.selectedJob = null;
+    }
     $scope.jobOptions = $scope.jobs.filter(function(el) {
-      return el.client_id == $scope.selectedClient.id;
+      return el.client_id == id; //$scope.selectedClient.id;
     });
     $state.go('entry.new');
-    // console.log('selectedClient.id is', $scope.selectedClient.id);
-    // $state.go('clients.detail', {id: $scope.selectedClient.id })
   };
 
 })
 
 .controller('NewEntryController', function($scope) {
+  $scope.data = {};
+  $scope.data.outerStartTime = null;
+  $scope.data.outerEndTime = null;
 
 });

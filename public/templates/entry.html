@@ -9,7 +9,7 @@
       <select class="form-control selectpicker"
               ng-model="selectedClient"
               ng-options="client.company for client in clients"
-              ng-change="loadClientJobs()"
+              ng-change="loadClientJobs(selectedClient.id)"
               name="client">
               <option value="">-- choose client --</option>
       </select>
