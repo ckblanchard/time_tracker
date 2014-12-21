@@ -6,7 +6,8 @@
       <button type="button" 
               class="btn btn-success btn-lg start-button"
               start-time="data.outerStartTime"
-              ng-click="timerStart()">
+              ng-click="timerStart()"
+              ng-disabled="startButton.disabled">
         Start
       </button>
     </div>
@@ -26,7 +27,9 @@
   <div id="record" class="panel panel-default">
 
     <div class="panel-body">
-      <p class="timer text-center active"></p>
+      <p class="timer text-center active">
+        
+      </p>
     </div>
 
   </div>
