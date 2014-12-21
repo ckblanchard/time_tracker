@@ -17,5 +17,13 @@
 //= require angular-ui-router
 //= require angular-resource
 //= require bootstrap-sprockets
+
+// require angular app and other modules in appropriate order
+//= require app/app.js
+//= require app/timetracker.states.js
+//= require app/controllers/homeController.js
+//= require app/directives/timerDirective.js
+//= require app/services/ClientService.js
+
 //= require_tree .
 

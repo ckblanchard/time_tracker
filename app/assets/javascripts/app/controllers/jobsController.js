@@ -1,4 +1,4 @@
-angular.module('timetracker')
+angular.module('timetracker.controllers')
 .controller('JobsController', function($scope, allJobs, JobsService, $state) {
 
   $scope.jobs = allJobs;

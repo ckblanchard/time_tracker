@@ -1,4 +1,4 @@
-angular.module('timetracker')
+angular.module('timetracker.directives', [])
 .directive('cbTimer', function($window){
   return {
     restrict: 'E',

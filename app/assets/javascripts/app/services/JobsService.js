@@ -1,4 +1,4 @@
-angular.module('timetracker.jobsService', [])
+angular.module('timetracker.services')
 .factory('JobsService', function($http) {
 
   var service = {

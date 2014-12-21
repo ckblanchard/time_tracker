@@ -1,4 +1,4 @@
-angular.module('timetracker.sessionService', [])
+angular.module('timetracker.services')
 .factory('SessionService', function($http, $q) {
 
   var service = {

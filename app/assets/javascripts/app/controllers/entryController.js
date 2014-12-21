@@ -1,4 +1,4 @@
-angular.module('timetracker')
+angular.module('timetracker.controllers')
 .controller('EntryController', function($scope, $stateParams, allClients, ClientService, $state, allJobs, JobsService) {
 
   $scope.id = $stateParams.id
